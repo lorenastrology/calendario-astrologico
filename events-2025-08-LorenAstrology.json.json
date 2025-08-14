@@ -1,0 +1,178 @@
+[
+  {
+    "date": "2025-08-09",
+    "title": "Luna Llena en Acuario",
+    "type": "Lunación",
+    "sign": "Acuario",
+    "degree": "",
+    "notes": "Culminación y revelación; cierre de ciclo en el eje Leo–Acuario."
+  },
+  {
+    "date": "2025-08-16",
+    "title": "Cuarto Menguante en Tauro",
+    "type": "Lunación",
+    "sign": "Tauro",
+    "degree": "",
+    "notes": "Disminuir, soltar y revisar estrategias antes del ciclo nuevo."
+  },
+  {
+    "date": "2025-08-23",
+    "title": "Luna Nueva (Black Moon) en Virgo",
+    "type": "Lunación",
+    "sign": "Virgo",
+    "degree": "",
+    "notes": "Semilla potente en Virgo: enfoque, hábitos y mejora continua."
+  },
+  {
+    "date": "2025-08-31",
+    "title": "Cuarto Creciente en Sagitario",
+    "type": "Lunación",
+    "sign": "Sagitario",
+    "degree": "",
+    "notes": "Empuje y ajuste de rumbo; activar compromisos del ciclo."
+  },
+  {
+    "date": "2025-08-07",
+    "title": "Marte ingresa en Libra",
+    "type": "Ingreso planetario",
+    "sign": "Libra",
+    "degree": "0°00'",
+    "notes": "Acción y decisiones con búsqueda de equilibrio, negociación y estética (Libra)."
+  },
+  {
+    "date": "2025-08-22",
+    "title": "Sol ingresa en Virgo",
+    "type": "Ingreso planetario",
+    "sign": "Virgo",
+    "degree": "0°00'",
+    "notes": "Inicio de temporada en Virgo. Ajuste de enfoque y tono energético."
+  },
+  {
+    "date": "2025-08-25",
+    "title": "Venus ingresa en Leo",
+    "type": "Ingreso planetario",
+    "sign": "Leo",
+    "degree": "0°00'",
+    "notes": "Deseos visibles: creatividad, romance y expresión con brillo (Leo)."
+  },
+  {
+    "date": "2025-08-11",
+    "title": "Mercurio estaciona directo (4°14′ Leo)",
+    "type": "Estación planetaria",
+    "sign": "Leo",
+    "degree": "4°14′",
+    "notes": "Claridad progresiva en comunicación y trámites; retomar acuerdos con criterio."
+  },
+  {
+    "date": "2025-08-12",
+    "title": "Venus conjunción Júpiter",
+    "type": "Aspecto (mayor)",
+    "sign": "Cáncer",
+    "degree": "14°",
+    "notes": "Aperturas y oportunidades emocionales; fertilidad creativa y vínculos nutritivos."
+  },
+  {
+    "date": "2025-08-03",
+    "title": "La Luna ingresa en Sagitario",
+    "type": "Ingreso de la Luna",
+    "sign": "Sagitario",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Sagitario."
+  },
+  {
+    "date": "2025-08-05",
+    "title": "La Luna ingresa en Capricornio",
+    "type": "Ingreso de la Luna",
+    "sign": "Capricornio",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Capricornio."
+  },
+  {
+    "date": "2025-08-08",
+    "title": "La Luna ingresa en Acuario",
+    "type": "Ingreso de la Luna",
+    "sign": "Acuario",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Acuario."
+  },
+  {
+    "date": "2025-08-10",
+    "title": "La Luna ingresa en Piscis",
+    "type": "Ingreso de la Luna",
+    "sign": "Piscis",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Piscis."
+  },
+  {
+    "date": "2025-08-12",
+    "title": "La Luna ingresa en Aries",
+    "type": "Ingreso de la Luna",
+    "sign": "Aries",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Aries."
+  },
+  {
+    "date": "2025-08-14",
+    "title": "La Luna ingresa en Tauro",
+    "type": "Ingreso de la Luna",
+    "sign": "Tauro",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Tauro."
+  },
+  {
+    "date": "2025-08-16",
+    "title": "La Luna ingresa en Géminis",
+    "type": "Ingreso de la Luna",
+    "sign": "Géminis",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Géminis."
+  },
+  {
+    "date": "2025-08-18",
+    "title": "La Luna ingresa en Cáncer",
+    "type": "Ingreso de la Luna",
+    "sign": "Cáncer",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Cáncer."
+  },
+  {
+    "date": "2025-08-21",
+    "title": "La Luna ingresa en Leo",
+    "type": "Ingreso de la Luna",
+    "sign": "Leo",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Leo."
+  },
+  {
+    "date": "2025-08-23",
+    "title": "La Luna ingresa en Virgo",
+    "type": "Ingreso de la Luna",
+    "sign": "Virgo",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Virgo."
+  },
+  {
+    "date": "2025-08-25",
+    "title": "La Luna ingresa en Libra",
+    "type": "Ingreso de la Luna",
+    "sign": "Libra",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Libra."
+  },
+  {
+    "date": "2025-08-28",
+    "title": "La Luna ingresa en Escorpio",
+    "type": "Ingreso de la Luna",
+    "sign": "Escorpio",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Escorpio."
+  },
+  {
+    "date": "2025-08-30",
+    "title": "La Luna ingresa en Sagitario",
+    "type": "Ingreso de la Luna",
+    "sign": "Sagitario",
+    "degree": "",
+    "notes": "Cambio de tono emocional hacia Sagitario."
+  }
+]

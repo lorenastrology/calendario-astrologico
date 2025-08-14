@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendario Astrológico — Loren Astrology</title>
+  <style>
+    :root{ --bg:#faf7f1; --fg:#2b2b2b; --mustard:#c79c2e; --sand:#e7dcc5; --card:#fffaf0; }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
+    .container{max-width:1100px;margin:24px auto;padding:0 16px}
+    .header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--mustard),var(--sand));box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    h1{font-size:1.35rem;margin:0;letter-spacing:.2px}
+    .controls{display:flex;align-items:center;gap:8px}
+    button,select{border:1px solid var(--sand);background:white;border-radius:12px;padding:10px 14px;font-size:.95rem;cursor:pointer}
+    button:hover{border-color:var(--mustard)}
+    .calendar{background:white;border:1px solid var(--sand);border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    .weekdays,.grid{display:grid;grid-template-columns:repeat(7,1fr)}
+    .weekdays div{background:var(--card);padding:10px 6px;text-align:center;font-weight:600;border-bottom:1px solid var(--sand)}
+    .cell{min-height:110px;border-right:1px solid var(--sand);border-bottom:1px solid var(--sand);padding:8px;position:relative}
+    .cell:last-child{border-right:none}
+    .date{font-size:.85rem;font-weight:600;opacity:.8}
+    .event{margin-top:6px;font-size:.84rem;line-height:1.25;background:linear-gradient(180deg,#fff,var(--card));border:1px solid var(--sand);border-left:4px solid var(--mustard);padding:6px 8px;border-radius:10px}
+    .pill{display:inline-block;font-size:.72rem;padding:2px 8px;border-radius:999px;background:var(--mustard);color:white;margin-right:6px}
+    .legend{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+    .legend .tag{font-size:.8rem;background:var(--sand);border-radius:999px;padding:6px 10px;border:1px solid var(--sand)}
+    .footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}
+    .cta{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:var(--mustard);color:white;border:none;border-radius:12px;text-decoration:none}
+    .source{font-size:.85rem;opacity:.8}
+    @media (max-width:760px){ .cell{min-height:90px} .event{font-size:.8rem} .controls{flex-wrap:wrap} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Calendario Astrológico — Loren Astrology</h1>
+      </div>
+      <div class="controls">
+        <button id="prev">⟵ Mes anterior</button>
+        <div id="monthLabel" aria-live="polite"></div>
+        <button id="next">Mes siguiente ⟶</button>
+        <select id="yearPicker" aria-label="Año"></select>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="tag">Ingresos planetarios</span>
+      <span class="tag">Lunaciones / Eclipses</span>
+      <span class="tag">Aspectos mayores</span>
+      <span class="tag">Cambios de dirección</span>
+    </div>
+
+    <div class="calendar">
+      <div class="weekdays">
+        <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="footer">
+      <a class="cta" id="icsLink" href="./calendario_AGOSTO_2025_LorenAstrology.ics" download>
+        Añadir calendario (.ics)
+      </a>
+      <span class="source">Propiedad: <strong>Lorena Yepez</strong> · Fuente: <em>lorenastrology.com</em></span>
+    </div>
+  </div>
+
+  <script>
+    // Rutas relativas (funcionan en GitHub Pages si los archivos están en la raíz del repo)
+    const EVENTS_JSON_URL = './events-2025-08-LorenAstrology.json';
+
+    let EVENTS = [];
+    fetch(EVENTS_JSON_URL)
+      .then(r => r.json())
+      .then(data => { EVENTS = data; render(); })
+      .catch(() => { EVENTS = []; render(); });
+
+    const grid = document.getElementById('grid');
+    const monthLabel = document.getElementById('monthLabel');
+    const yearPicker = document.getElementById('yearPicker');
+
+    const now = new Date();
+    for (let y = now.getFullYear()-2; y <= now.getFullYear()+2; y++){
+      const opt = document.createElement('option');
+      opt.value = y; opt.textContent = y; yearPicker.appendChild(opt);
+    }
+
+    let current = new Date(now.getFullYear(), now.getMonth(), 1);
+
+    function eventsForDate(iso){
+      return EVENTS.filter(e => e.date === iso);
+    }
+
+    function render(){
+      grid.innerHTML = '';
+      const y = current.getFullYear();
+      const m = current.getMonth();
+      yearPicker.value = y;
+
+      const first = new Date(y, m, 1);
+      const last = new Date(y, m+1, 0);
+      const startWeekday = (first.getDay()+6)%7; // 0=Lun ... 6=Dom
+      const daysInMonth = last.getDate();
+
+      const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      monthLabel.textContent = monthNames[m] + ' ' + y;
+
+      for(let i=0;i<startWeekday;i++){
+        const cell=document.createElement('div');cell.className='cell';grid.appendChild(cell);
+      }
+      for(let d=1; d<=daysInMonth; d++){
+        const cell=document.createElement('div');cell.className='cell';
+        const dateStr = y + '-' + String(m+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+        const head=document.createElement('div');head.className='date';head.textContent=d;cell.appendChild(head);
+
+        const list=eventsForDate(dateStr);
+        list.forEach(ev=>{
+          const item=document.createElement('div');item.className='event';
+          const pill=document.createElement('span');pill.className='pill';pill.textContent=ev.type || 'Evento';item.appendChild(pill);
+          const title=document.createElement('span');title.textContent=' ' + (ev.title || '') + (ev.sign?(' · '+ev.sign):'') + (ev.degree?(' '+ev.degree):''); item.appendChild(title);
+          if(ev.notes){ const notes=document.createElement('div');notes.style.fontSize='.75rem';notes.style.opacity='.8';notes.textContent=ev.notes;item.appendChild(notes); }
+          cell.appendChild(item);
+        });
+
+        grid.appendChild(cell);
+      }
+    }
+
+    document.getElementById('prev').addEventListener('click',()=>{current.setMonth(current.getMonth()-1);render();});
+    document.getElementById('next').addEventListener('click',()=>{current.setMonth(current.getMonth()+1);render();});
+    yearPicker.addEventListener('change', e=>{current.setFullYear(parseInt(e.target.value,10));render();});
+
+    render();
+  </script>
+</body>
+</html>

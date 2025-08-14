@@ -61,15 +61,18 @@
     </div>
 
     <div class="footer">
-      <a class="cta" id="icsLink" href="https://lorenastrology.github.io/calendario-astrologico/calendario_AGOSTO_2025_LorenAstrology.ics" download>
-        Descargar calendario (.ics)
+      <a class="cta" id="icsLink"
+         href="https://lorenastrology.github.io/calendario-astrologico/calendario_AGOSTO_2025_LorenAstrology.ics"
+         download>
+        Añadir calendario (.ics)
       </a>
       <span class="source">Propiedad: <strong>Lorena Yepez</strong> · Fuente: <em>lorenastrology.com</em></span>
     </div>
   </div>
 
   <script>
-    const EVENTS_JSON_URL = 'https://lorenastrology.github.io/calendario-astrologico/events-2025-08-LorenAstrology.json?v=1';
+    // URL ABSOLUTA al JSON (+ parámetro para evitar caché)
+    const EVENTS_JSON_URL = 'https://lorenastrology.github.io/calendario-astrologico/events-2025-08-LorenAstrology.json?v=2';
 
     let EVENTS = [];
     fetch(EVENTS_JSON_URL)
@@ -101,7 +104,7 @@
 
       const first = new Date(y, m, 1);
       const last = new Date(y, m+1, 0);
-      const startWeekday = (first.getDay()+6)%7;
+      const startWeekday = (first.getDay()+6)%7; // 0=Lun ... 6=Dom
       const daysInMonth = last.getDate();
 
       const monthNames = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
